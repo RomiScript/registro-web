@@ -1,23 +1,75 @@
-import React from "react";
-import "./Registro.css";
+import { useState } from 'react';
+import './Registro.css';
 
+function Registro() {
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmarPassword, setConfirmarPassword] = useState('');
 
-const Registro = () => {
-    return (
-        <div className="form-container">
-            <h2>Registro</h2>
-            <form>
-                <input type="text" placeholder="Nombre" />
-                <input type="text" placeholder="Apellido" />
-                <input type="email" placeholder="Email" />
-                <input type="tel" placeholder="Teléfono" />
-                <input type="password" placeholder="Contraseña" />
-                <input type="password" placeholder="Confirmar contraseña" />
-                <button type="submit">Registrarse</button>
-            </form>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log({
+      nombre,
+      apellido,
+      email,
+      telefono,
+      password,
+      confirmarPassword,
+    });
+  };
 
-        </div>
-    );
+  return (
+    <form onSubmit={handleSubmit}>
+      <h2>Registro</h2>
 
-};
+      <label>Nombre</label>
+      <input
+        type="text"
+        value={nombre}
+        onChange={(e) => setNombre(e.target.value)}
+      />
+
+      <label>Apellido</label>
+      <input
+        type="text"
+        value={apellido}
+        onChange={(e) => setApellido(e.target.value)}
+      />
+
+      <label>Email</label>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <label>Teléfono</label>
+      <input
+        type="tel"
+        value={telefono}
+        onChange={(e) => setTelefono(e.target.value)}
+      />
+
+      <label>Contraseña</label>
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <label>Confirmar contraseña</label>
+      <input
+        type="password"
+        value={confirmarPassword}
+        onChange={(e) => setConfirmarPassword(e.target.value)}
+      />
+
+      <button type="submit">Registrarse</button>
+    </form>
+  );
+}
+
 export default Registro;
